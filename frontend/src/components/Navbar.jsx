@@ -11,24 +11,40 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 bg-slate-900 text-white">
-      <Link to="/" className="text-lg font-semibold">AI Interview Coach</Link>
-      <div className="flex gap-4 items-center">
-        {user ? (
-          <>
-            <Link to="/dashboard" className="hover:text-indigo-300">Dashboard</Link>
-            <Link to="/history" className="hover:text-indigo-300">History</Link>
-            <button onClick={handleLogout} className="bg-red-500 px-3 py-1 rounded hover:bg-red-600">
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login" className="hover:text-indigo-300">Login</Link>
-            <Link to="/register" className="hover:text-indigo-300">Register</Link>
-          </>
-        )}
-      </div>
-    </nav>
+    <header className="sticky top-0 z-50 w-full px-4 pt-4">
+      <nav className="max-w-4xl mx-auto flex items-center justify-between px-6 py-4 bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-lg rounded-2xl">
+        <Link to="/" className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
+          ⚡ AI Interview Coach
+        </Link>
+        <div className="flex gap-4 items-center">
+          {user ? (
+            <>
+              <span className="hidden md:inline text-xs text-slate-400 font-medium bg-slate-800/50 px-3 py-1 rounded-full border border-white/5">
+                👤 {user.name || 'User'}
+              </span>
+              <Link to="/dashboard" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors">
+                Dashboard
+              </Link>
+              <Link to="/history" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors">
+                History
+              </Link>
+              <button onClick={handleLogout} className="clay-btn clay-btn-danger text-xs px-3 py-1.5 rounded-xl">
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors">
+                Login
+              </Link>
+              <Link to="/register" className="clay-btn clay-btn-primary text-xs px-4 py-2 rounded-xl">
+                Register
+              </Link>
+            </>
+          )}
+        </div>
+      </nav>
+    </header>
   );
 }
+
